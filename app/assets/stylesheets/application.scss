@@ -12,6 +12,12 @@ body {
   padding-top: 70px;
 }
 
+.navbar-nav > li > .username {
+  display: block;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 // Bootstrap adjustments
 form.button_to {
   display: inline;
