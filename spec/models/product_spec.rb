@@ -19,6 +19,8 @@ RSpec.describe Product, type: :model do
       @product.name = nil
 
       expect(@product).to_not be_valid
+      expect(@product.errors.full_messages_for(:name))
+        .to include(match(/blank/i))
     end
 
     it 'should not be valid when price is missing'
