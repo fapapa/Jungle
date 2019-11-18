@@ -23,7 +23,13 @@ RSpec.describe Product, type: :model do
         .to include(match(/blank/i))
     end
 
-    it 'should not be valid when price is missing'
+    it 'should not be valid when price is missing' do
+      @product.price_cents = nil
+
+      expect(@product).to_not be_valid
+      expect(@product.errors.full_messages_for(:price))
+        .to include(match(/blank/i))
+    end
 
     it 'should not be valid when quantity is missing'
 
