@@ -1,5 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'validations' do
+    it 'should be valid when all required fields are present'
+
+    it 'should not be valid when name is mising'
+
+    it 'should not be valid when price is missing'
+
+    it 'should not be valid when quantity is missing'
+
+    it 'should not be valid when category is missing'
+  end
 end
