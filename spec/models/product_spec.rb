@@ -31,7 +31,13 @@ RSpec.describe Product, type: :model do
         .to include(match(/blank/i))
     end
 
-    it 'should not be valid when quantity is missing'
+    it 'should not be valid when quantity is missing' do
+      @product.quantity = nil
+
+      expect(@product).to_not be_valid
+      expect(@product.errors.full_messages_for(:quantity))
+        .to include(match(/blank/i))
+    end
 
     it 'should not be valid when category is missing'
   end
