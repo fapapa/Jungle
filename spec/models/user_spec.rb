@@ -22,9 +22,12 @@ RSpec.describe User, type: :model do
         .to include(match(/blank/i))
     end
 
-    it 'should fail when password confirmation is blank'
-
-    it 'should fail when password confirmation does not match'
+    it 'should fail when password confirmation does not match' do
+      @user.password_confirmation = 'NotAMatch'
+      expect(@user).to_not be_valid
+      expect(@user.errors.full_messages_for(:password_confirmation))
+        .to include(match(/match/i))
+    end
 
     it 'should fail when email already exists (case insensitive)'
 
