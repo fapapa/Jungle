@@ -67,7 +67,17 @@ RSpec.describe User, type: :model do
 
   describe '.authenticate_with_credentials' do
     context 'with valid credentials' do
-      it 'returns the user with those credentials'
+      it 'returns the user with those credentials' do
+        existing_user = User.create(
+          name: 'real user',
+          email: 'test@test.com',
+          password: 's3kr37',
+          password_confirmation: 's3kr37'
+        )
+
+        expect(User.authenticate_with_credentials('test@test.com', 's3kr37'))
+          .to eq(existing_user)
+      end
     end
 
     context 'with invalid credentials' do

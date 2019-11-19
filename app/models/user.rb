@@ -4,4 +4,8 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
 
   has_secure_password
+
+  def self.authenticate_with_credentials(email, password)
+    User.find_by(email: email)
+  end
 end
