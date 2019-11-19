@@ -29,7 +29,12 @@ RSpec.describe User, type: :model do
         .to include(match(/match/i))
     end
 
-    it 'should fail when email already exists (case insensitive)'
+    it 'should fail when email already exists (case insensitive)' do
+      existing_user = User.create(@user.attributes)
+      expect(@user).to_not be_valid
+      expect(@user.errors.full_messages_for(:email))
+        .to include(match(/taken/i))
+    end
 
     it 'should fail when email is blank'
 
