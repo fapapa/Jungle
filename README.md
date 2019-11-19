@@ -1,7 +1,7 @@
 # Jungle
 
-A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
-
+A mini e-commerce application built with Rails 4.2 for purposes of teaching
+Rails by example.
 
 ## Setup
 
@@ -14,7 +14,14 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 7. Put Stripe (test) keys into appropriate .env vars
 8. Run `bin/rails s -b 0.0.0.0` to start the server
 
-## Stripe Testing
+## Testing
+
+### PhantomJS
+
+PhantomJS is required for testing. It is recommended you install it via Homebrew
+or the package manager for your operating system.
+
+### Stripe Testing
 
 Use Credit Card # 4111 1111 1111 1111 for testing success scenarios.
 
@@ -25,3 +32,9 @@ More information in their docs: <https://stripe.com/docs/testing#cards>
 * Rails 4.2 [Rails Guide](http://guides.rubyonrails.org/v4.2/)
 * PostgreSQL 9.x
 * Stripe
+
+## Screenshots
+
+![Home Page](./homepage.png)
+![Product Details Page](./product_detail.png)
+![Admin Dashboard Page](./admin_dashboard.png)
