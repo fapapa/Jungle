@@ -64,4 +64,16 @@ RSpec.describe User, type: :model do
         .to include(match(/short/i))
     end
   end
+
+  describe '.authenticate_with_credentials' do
+    context 'with valid credentials' do
+      it 'returns the user with those credentials'
+    end
+
+    context 'with invalid credentials' do
+      it 'returns false with a non-existent email'
+
+      it 'returns false with a wrong password'
+    end
+  end
 end
