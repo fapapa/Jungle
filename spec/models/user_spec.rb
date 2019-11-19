@@ -86,7 +86,11 @@ RSpec.describe User, type: :model do
           .to eq(@existing_user)
       end
 
-      it 'ignores case in the email'
+      it 'ignores case in the email' do
+        @existing_user.update(email: 'test@TEST.cOm')
+        expect(User.authenticate_with_credentials('TEST@test.com', 's3kr37'))
+          .to eq(@existing_user)
+      end
     end
 
     context 'with invalid credentials' do
