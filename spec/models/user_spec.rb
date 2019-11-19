@@ -88,7 +88,10 @@ RSpec.describe User, type: :model do
           .to be false
       end
 
-      it 'returns false with a wrong password'
+      it 'returns false with a wrong password' do
+        expect(User.authenticate_with_credentials('test@test.com', 'wrong_password'))
+          .to be false
+      end
     end
   end
 end
