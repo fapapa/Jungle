@@ -81,7 +81,10 @@ RSpec.describe User, type: :model do
           .to eq(@existing_user)
       end
 
-      it 'ignores leading and trailing whitespace in the email'
+      it 'ignores leading and trailing whitespace in the email' do
+        expect(User.authenticate_with_credentials('  test@test.com  ', 's3kr37'))
+          .to eq(@existing_user)
+      end
 
       it 'ignores case in the email'
     end

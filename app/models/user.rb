@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
   has_secure_password
 
   def self.authenticate_with_credentials(email, password)
-    User.find_by(email: email).try(:authenticate, password)
+    User.find_by(email: email.strip).try(:authenticate, password)
   end
 end
