@@ -85,7 +85,7 @@ RSpec.describe User, type: :model do
     context 'with invalid credentials' do
       it 'returns false with a non-existent email' do
         expect(User.authenticate_with_credentials('not_in@database.com', 's3kr37'))
-          .to be false
+          .to be nil
       end
 
       it 'returns false with a wrong password' do
