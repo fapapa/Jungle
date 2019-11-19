@@ -36,7 +36,12 @@ RSpec.describe User, type: :model do
         .to include(match(/taken/i))
     end
 
-    it 'should fail when email is blank'
+    it 'should fail when email is blank' do
+      @user.email = nil
+      expect(@user).to_not be_valid
+      expect(@user.errors.full_messages_for(:email))
+        .to include(match(/blank/i))
+    end
 
     it 'should fail when first name is blank'
 
