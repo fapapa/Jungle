@@ -31,7 +31,11 @@ RSpec.describe User, type: :model do
 
     it 'should fail when email already exists (case insensitive)' do
       existing_user = User.create(
-        @user.attributes.merge(email: 'TEST@TEST.COM')
+        @user.attributes.merge(
+          email: 'TEST@TEST.COM',
+          password: 's3kr37',
+          password_confirmation: 's3kr37'
+        )
       )
       expect(@user).to_not be_valid
       expect(@user.errors.full_messages_for(:email))
@@ -50,6 +54,14 @@ RSpec.describe User, type: :model do
       expect(@user).to_not be_valid
       expect(@user.errors.full_messages_for(:name))
         .to include(match(/blank/i))
+    end
+
+    it 'should fail when password is too short' do
+      @user.password = 'short'
+      @user.password_confirmation = 'short'
+      expect(@user).to_not be_valid
+      expect(@user.errors.full_messages_for(:password))
+        .to include(match(/short/i))
     end
   end
 end
